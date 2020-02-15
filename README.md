@@ -1,5 +1,5 @@
 # Blogful API
 
-Seeding data base: psql -U <username> -d <databaseName> -f <filePath>
+Seeding data base: psql -U 'username' -d 'databaseName' -f 'filePath'
 
 
