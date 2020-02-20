@@ -32,11 +32,11 @@ articlesRouter
       req.app.get('db'),
       newArticle
     )
-      .then(article => {
+      .then(articles => {
         res
           .status(201)
           .location(`/articles/${articles.id}`)
-          .json(article)
+          .json(articles)
       })
       .catch(next)
   })
