@@ -60,6 +60,7 @@ articlesRouter
       .catch(next)
   })
   .get((req, res, next) => {
+    const article = res.article
     res.json({
       id: article.id,
       style: article.style,

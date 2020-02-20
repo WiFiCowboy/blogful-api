@@ -66,7 +66,8 @@ describe('Articles Endpoints', function () {
       })
 
       it('responds with 200 and the specified article', () => {
-        const articleId = 2
+        // 
+        const articleId = testArticles[0].id
         const expectedArticle = testArticles[articleId - 1]
         return supertest(app)
           .get(`/articles/${articleId}`)
@@ -123,10 +124,10 @@ describe('Articles Endpoints', function () {
           const actual = new Date(res.body.date_published).toLocaleString()
           expect(actual).to.eql(expected)
         })
-        .then(postRes =>
+        .then(res =>
           supertest(app)
-            .get(`/articles/${postRes.body.id}`)
-            .expect(postRes.body)
+            .get(`/articles/${res.body.id}`)
+            .expect(res.body)
         )
     })
 
