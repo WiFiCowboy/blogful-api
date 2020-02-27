@@ -4,7 +4,7 @@ CREATE TABLE blogful_users (
   username TEXT NOT NULL UNIQUE,
   password TEXT,
   nickname TEXT,
-  date_created TIMESTAMP NOT NULL DEFAULT now() 
+  date_created TIMESTAMP NOT NULL DEFAULT now()
 );
 
 ALTER TABLE blogful_articles

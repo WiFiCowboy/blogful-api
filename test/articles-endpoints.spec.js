@@ -2,6 +2,7 @@ const { expect } = require('chai')
 const knex = require('knex')
 const app = require('../src/app')
 const { makeArticlesArray } = require('./articles.fixtures')
+const { makeUsersArray } = require('./users.fixtures')
 
 describe('Articles Endpoints', function () {
   let db
@@ -11,14 +12,16 @@ describe('Articles Endpoints', function () {
       client: 'pg',
       connection: process.env.TEST_DB_URL,
     })
+    console.log(process.env.TEST_DB_URL);
+
     app.set('db', db)
   })
 
   after('disconnect from db', () => db.destroy())
 
-  before('clean the table', () => db('blogful_articles').truncate())
+  before('clean the table', () => db.raw('truncate table blogful_articles cascade'))
 
-  afterEach('cleanup', () => db('blogful_articles').truncate())
+  afterEach('cleanup', () => db.raw('truncate table blogful_articles cascade'))
 
   describe(`GET /api/articles`, () => {
     context(`Given no articles`, () => {
